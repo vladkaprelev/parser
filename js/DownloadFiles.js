@@ -1,4 +1,6 @@
 import {sendRequest} from "./sendRequest.js";
+import {referenceComponent} from "./components/ref/refComponent.js";
+// import {buttonComponent} from "./components/button/buttonComponent.js";
 
 export class DownloadFiles {
     constructor($el) {
@@ -13,23 +15,20 @@ export class DownloadFiles {
 
     _handleDownloadFiles() {
         const fileList = [...this.files]
-        fileList.forEach(file => {
-            let dt = new DataTransfer();
-            dt.items.add(file);
-            let fileList = dt.files
-            const blob= new Blob(fileList, {type: 'text/javascript'})
-            const link = URL.createObjectURL(blob)
-            sendRequest(link).then(data => {
-                getData(data)
-            })
-
+        const blob = new Blob(fileList, {type: 'text/javascript'})
+        const link = URL.createObjectURL(blob)
+        sendRequest(link).then(data => {
+            getData(data)
         })
+
     }
+
 }
 
 function getData(data) {
-    console.log(data.name)
-    console.log(data.fields)
-    console.log(data.references)
-    console.log(data.buttons)
+
+    referenceComponent(data.references)
+
+    const app = document.querySelector('.app').innerHTML = `<div> ${data.name} </div> ${referenceComponent(data.references)}`
+
 }
