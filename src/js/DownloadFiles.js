@@ -29,11 +29,13 @@ export class DownloadFiles {
 
 function getData(data) {
 
-    const app = document.querySelector('.app').innerHTML = `<div> ${data.name} </div> 
+    const app = document.querySelector('.app').innerHTML = `<h2 class=${data.name}>${data.name}</h2> 
+<form class="form">
     ${fieldsComponent(data.fields)}
 ${referenceComponent(data.references)}
-${buttonComponent(data.buttons)}`
+${buttonComponent(data.buttons)}\`
 
+</form>`
 }
 
 new ResetButton(".reset")

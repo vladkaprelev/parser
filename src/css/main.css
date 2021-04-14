@@ -1,0 +1,128 @@
+:root {
+    --bgHeader: #B5C7CF;
+    --bg: #F7F9F9;
+    --fontColor: #26292C;
+    --blue: #079ED5;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    color: var(--fontColor);
+    background-color: var(--bg);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 3fr;
+    gap: 10px 0;
+    grid-template-areas: "header header header header" "main main main main";
+}
+
+.header {
+    grid-area: header;
+    background-color: var(--bgHeader);
+}
+
+.main {
+    grid-area: main;
+}
+
+.box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 400px;
+}
+
+.js .inputfile {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    display: inline-block;
+    padding: 10px 20px;
+
+    font-weight: 700;
+    color: var(--bg);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    text-transform: uppercase;
+
+    background-color: var(--blue);
+    border-radius: 5px;
+    outline: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+.inputfile:hover + label{
+    outline: none;
+    background-color: #0c80aa;
+
+}
+
+.inputfile:active + label {
+    background-color: #0c60aa;
+
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+.button {
+    border-radius: 5px;
+    border: none;
+    background-color:var(--blue);
+
+    display: inline-block;
+    padding: 10px 25px;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--bg);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.button:hover {
+    outline: none;
+    background-color: #0c80aa;
+}
+
+.button:active {
+    background-color: #0c60aa;
+}
+
+.form {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form label {
+}
+

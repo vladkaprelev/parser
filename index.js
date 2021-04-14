@@ -1,4 +1,6 @@
-import {DownloadFiles} from "./js/DownloadFiles.js";
+import {DownloadFiles} from "./src/js/DownloadFiles.js";
+import {customFile} from "./src/js/utils/custom-file-input.js";
 
 
-new DownloadFiles('file')
+new DownloadFiles('JSON_file')
+customFile( document, window, 0 )
