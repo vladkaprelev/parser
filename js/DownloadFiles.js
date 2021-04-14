@@ -1,6 +1,8 @@
 import {sendRequest} from "./sendRequest.js";
 import {referenceComponent} from "./components/ref/refComponent.js";
-// import {buttonComponent} from "./components/button/buttonComponent.js";
+import {buttonComponent} from "./components/button/buttonComponent.js";
+import {fieldsComponent} from "./components/fields/fieldsComponent.js";
+import {ResetButton} from "./reset.js";
 
 export class DownloadFiles {
     constructor($el) {
@@ -27,8 +29,11 @@ export class DownloadFiles {
 
 function getData(data) {
 
-    referenceComponent(data.references)
-
-    const app = document.querySelector('.app').innerHTML = `<div> ${data.name} </div> ${referenceComponent(data.references)}`
+    const app = document.querySelector('.app').innerHTML = `<div> ${data.name} </div> 
+    ${fieldsComponent(data.fields)}
+${referenceComponent(data.references)}
+${buttonComponent(data.buttons)}`
 
 }
+
+new ResetButton(".reset")
