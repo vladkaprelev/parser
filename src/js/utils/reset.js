@@ -11,6 +11,9 @@ export class ResetButton {
     }
 
     _handleButtonResetClick() {
-        const app = getEl('.app').innerHTML = ''
+        getEl('.app').innerHTML = ''
+        const inputFile = getEl('.inputfile')
+        inputFile.value = ''
+        inputFile.nextElementSibling.querySelector('span').innerHTML = 'Choose a file&hellip;'
     }
 }
