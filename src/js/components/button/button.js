@@ -1,1 +1,1 @@
-export const buttonLayout = (text) => `<button class="button">${text}</button>`
+export const buttonLayout = (text, type="submit") => `<button type=${type} class="btn btn-dark">${text}</button>`

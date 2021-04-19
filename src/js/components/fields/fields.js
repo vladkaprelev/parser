@@ -9,38 +9,40 @@ export const fieldsLayout = (data) => {
     const textarea = data.input.type === 'textarea'
     const file = data.input.type === 'file'
     const color = data.input.type === 'color'
+    const checkbox = data.input.type === 'checkbox'
 
     if (number) {
-        return `<label> 
-            <h3>${isLabel}</h3>
-            <input type='text' ${isRequired} ${isPlaceholder} ${isMask}></label>`
+        return `<label class="form-label"> 
+            ${isLabel}
+            <input class="form-control" type='text' ${isRequired} ${isPlaceholder} ${isMask}></label>`
     }
 
     if (technology) {
         const technologies = data.input.technologies.map(text => {
             return `<option value="${text}">${text}</option>`
         }).join('')
-        return `<label> 
-            <h3>${isLabel}</h3>
-            <select ${isMultiple} size="3" name="technologies">${technologies}</select>`
+        return `<label class="form-label"> 
+            ${isLabel}
+            <select class="form-select" ${isMultiple} size="3" name="technologies">${technologies}</select>
+            </label>`
     }
 
     if (textarea) {
-        return `<label> 
-            <h3>${isLabel}</h3>
-            <textarea name=${data.input.type} ${isRequired} data-input=${data.input.type}>
-            ${isPlaceholder} </textarea></label>`
+        return `
+<div class="form-floating">
+  <textarea class="form-control" placeholder=${data.input.placeholder} 
+  style="height: 100px" name=${data.input.type}  ${isRequired} data-input=${data.input.type}></textarea>
+  <label class="label" for="floatingTextarea2">${isLabel}</label>
+</div>`
     }
 
     if (file && data.input.filetype) {
         const fileList = data.input.filetype.map(file => {
             return `image/${file}`
         }).join()
-        console.log(fileList)
-
-        return `<label> 
-            <h3>${isLabel}</h3>
-            <input type=${data.input.type} ${isRequired} ${isPlaceholder} accept=${fileList}
+        return `<label class="form-label"> 
+            ${isLabel}
+            <input class="form-control" type=${data.input.type} ${isRequired} ${isPlaceholder} accept=${fileList}
                                            data-input=${data.input.type} ${isMultiple}></label>`
     }
 
@@ -48,16 +50,24 @@ export const fieldsLayout = (data) => {
         const colorsList = data.input.colors.map(color => {
             return `<option value="${color}">${color}</option>`
         }).join('')
-        return `<label> 
-            <h3>${isLabel}</h3>
-            <input type=${data.input.type} ${isRequired} ${isPlaceholder} list="presetColors"
+        return `<label class="form-label"> 
+            ${isLabel}
+            <input class="form-control form-control-color" type=${data.input.type} ${isRequired} 
+                                           ${isPlaceholder} list="presetColors"
                                            data-input=${data.input.type} ${isMultiple}>
             <datalist id="presetColors">${colorsList}</datalist>                                    
             </label>`
     }
 
-    return `<label> 
-            <h3>${isLabel}</h3>
-            <input type=${data.input.type} ${isRequired} ${isPlaceholder} 
-                                           data-input=${data.input.type} ${isMultiple}></label>`
+    if (checkbox) {
+        return `<label class="form-check-label">
+            ${isLabel}
+            <input class="form-check-input" type=${data.input.type} ${isRequired} ${isPlaceholder}
+            data-input=${data.input.type} ${isMultiple}></label>`
+    }
+
+    return `<label class="form-label"> 
+            ${isLabel}
+            <input class="form-control" type=${data.input.type} ${isRequired}  ${isPlaceholder}
+                                           data-input=${data.input.type}></label>`
 }
