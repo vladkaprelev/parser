@@ -1,6 +1,8 @@
+import {getEl} from "./getEl.js"
+
 export class ResetButton {
     constructor(selector) {
-        this.$el = document.querySelector(selector)
+        this.$el = getEl(selector)
         this._addEventListener()
     }
 
@@ -9,6 +11,6 @@ export class ResetButton {
     }
 
     _handleButtonResetClick() {
-        const app = document.querySelector('.app').innerHTML = ''
+        const app = getEl('.app').innerHTML = ''
     }
 }

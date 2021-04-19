@@ -1,9 +1,10 @@
+import {inputNumber} from "./inputNumber/inputNumber.js"
+
 export const fieldsLayout = (data) => {
     const isRequired = data.input.required ? 'required' : ''
     const isMultiple = data.input.multiple ? 'multiple' : ''
     const isPlaceholder = data.input.placeholder ? `placeholder="${data.input.placeholder}"` : ''
     const isLabel = data.label ? data.label : ''
-    const isMask = data.input.mask ? `data-mask="${data.input.mask}" placeholder="${data.input.mask}"` : ''
     const number = data.input.type === 'number'
     const technology = data.input.type === 'technology'
     const textarea = data.input.type === 'textarea'
@@ -11,10 +12,8 @@ export const fieldsLayout = (data) => {
     const color = data.input.type === 'color'
     const checkbox = data.input.type === 'checkbox'
 
-    if (number) {
-        return `<label class="form-label"> 
-            ${isLabel}
-            <input class="form-control" type='text' ${isRequired} ${isPlaceholder} ${isMask}></label>`
+    if (number && data.input.mask) {
+        return inputNumber(data.input.mask, isRequired, isLabel)
     }
 
     if (technology) {
@@ -65,6 +64,7 @@ export const fieldsLayout = (data) => {
             <input class="form-check-input" type=${data.input.type} ${isRequired} ${isPlaceholder}
             data-input=${data.input.type} ${isMultiple}></label>`
     }
+
 
     return `<label class="form-label"> 
             ${isLabel}

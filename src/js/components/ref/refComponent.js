@@ -1,6 +1,6 @@
-import {refLayout} from "./ref.js";
-import {filter} from "../../utils/filter.js";
-import {inputLayout} from "./input/input.js";
+import {refLayout} from "./ref.js"
+import {filter} from "../../utils/filter.js"
+import {inputLayout} from "./input/input.js"
 
 export const referenceComponent = (data) => {
     if (data) {

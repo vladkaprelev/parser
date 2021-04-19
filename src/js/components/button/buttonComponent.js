@@ -1,4 +1,4 @@
-import {buttonLayout} from "./button.js";
+import {buttonLayout} from "./button.js"
 
 export const buttonComponent = (data) => {
     if (data) {

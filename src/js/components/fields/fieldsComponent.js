@@ -1,4 +1,4 @@
-import {fieldsLayout} from "./fields.js";
+import {fieldsLayout} from "./fields.js"
 
 export const fieldsComponent = (data) => {
     if (data) {
