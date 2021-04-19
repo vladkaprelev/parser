@@ -49,13 +49,13 @@ export const fieldsLayout = (data) => {
         const colorsList = data.input.colors.map(color => {
             return `<option value="${color}">${color}</option>`
         }).join('')
-        return `<label class="form-label"> 
-            ${isLabel}
-            <input class="form-control form-control-color" type=${data.input.type} ${isRequired} 
+        return `<div class="color-form"><label class="form-label"> 
+            ${isLabel}</label>
+            <input type=${data.input.type} ${isRequired} value="#3366ff"
                                            ${isPlaceholder} list="presetColors"
                                            data-input=${data.input.type} ${isMultiple}>
             <datalist id="presetColors">${colorsList}</datalist>                                    
-            </label>`
+            </div>`
     }
 
     if (checkbox) {
